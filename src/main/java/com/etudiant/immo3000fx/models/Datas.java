@@ -67,7 +67,7 @@ public class Datas {
     }
 
     private void loadMariaDB() {
-        try (Connection conn = DriverManager.getConnection("jdbc:mariadb://192.168.153.10:3306/immo3000", "sio", "sio")) {
+        try (Connection conn = DriverManager.getConnection(Config.jdbc, Config.login, Config.password)) {
             chargerSaisons(conn);
             chargerSemaines(conn);
             chargerAppartements(conn);
