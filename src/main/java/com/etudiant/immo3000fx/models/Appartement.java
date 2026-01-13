@@ -26,7 +26,16 @@ public class Appartement {
     // Permet d'ajouter une nouvelle semaine de location
 
     public boolean dejaLoue(int n) {
-        throw new UnsupportedOperationException("A faire !!! ");
+        for( Location uneLocation : this.sesLocations ){
+            Semaine s = uneLocation.getSemaine() ;
+            int numSemaine = s.getNumSemaine() ;
+            //if( uneLocation.getSemaine().getNumSemaine()==n)
+            if( numSemaine == n ){
+                return true ;
+            }
+             
+        }
+        return false ;
     }
     // Indique si la semaine dont le numéro est passé en paramètre 
     // fait partie des semaines pendant lesquelles l’appartement a été loué.
