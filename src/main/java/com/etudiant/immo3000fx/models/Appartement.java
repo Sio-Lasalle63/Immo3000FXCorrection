@@ -20,22 +20,28 @@ public class Appartement {
         return sesLocations;
     }
 
-    public boolean ajouterSemaine(Semaine s) {
-        throw new UnsupportedOperationException("A faire !!! ");
+    public boolean ajouter(Semaine s) {
+        if (this.estDejaLoue(s.getNumSemaine())) {
+            return false;
+        } else {
+            Location nouvelleLoc = new Location(this, s);
+            this.sesLocations.add(nouvelleLoc);
+            return true;
+        }
     }
     // Permet d'ajouter une nouvelle semaine de location
 
-    public boolean dejaLoue(int n) {
-        for( Location uneLocation : this.sesLocations ){
-            Semaine s = uneLocation.getSemaine() ;
-            int numSemaine = s.getNumSemaine() ;
+    public boolean estDejaLoue(int n) {
+        for (Location uneLocation : this.sesLocations) {
+            Semaine s = uneLocation.getSemaine();
+            int numSemaine = s.getNumSemaine();
             //if( uneLocation.getSemaine().getNumSemaine()==n)
-            if( numSemaine == n ){
-                return true ;
+            if (numSemaine == n) {
+                return true;
             }
-             
+
         }
-        return false ;
+        return false;
     }
     // Indique si la semaine dont le numéro est passé en paramètre 
     // fait partie des semaines pendant lesquelles l’appartement a été loué.
@@ -55,6 +61,6 @@ public class Appartement {
 
     @Override
     public String toString() {
-        return  this.libelle +" / " + this.adresse ;
+        return this.libelle + " / " + this.adresse;
     }
 }
