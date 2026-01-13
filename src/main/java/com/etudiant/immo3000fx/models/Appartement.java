@@ -20,11 +20,11 @@ public class Appartement {
         return sesLocations;
     }
 
-    public boolean ajouter(Semaine s) {
-        if (this.estDejaLoue(s.getNumSemaine())) {
+    public boolean ajouter(Semaine uneSemaineDeLocation) {
+        if (this.estDejaLoue(uneSemaineDeLocation.getNumSemaine())) {
             return false;
         } else {
-            Location nouvelleLoc = new Location(this, s);
+            Location nouvelleLoc = new Location(this, uneSemaineDeLocation);
             this.sesLocations.add(nouvelleLoc);
             return true;
         }
