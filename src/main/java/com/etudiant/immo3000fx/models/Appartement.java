@@ -47,14 +47,24 @@ public class Appartement {
     // fait partie des semaines pendant lesquelles l’appartement a été loué.
 
     public float montantTotal() {
-        throw new UnsupportedOperationException("A faire !!! ");
+        float total = 0;
+        for (Location uneLocation : this.sesLocations) {
+            total += uneLocation.getSemaine().getSaison().getTarif();
+        }
+        return total;
     }
     // Calcule et retourne ce qu’a rapporté l’appartement,
     // c’est-à-dire le montant total correspondant à toutes les semaines 
     // pour lesquelles l’appartement a été loué.
 
     public int nbSemainesSaison(Saison s) {
-        throw new UnsupportedOperationException("A faire !!! ");
+        int nbS = 0 ;
+        for( Location l : sesLocations ){
+            if( l.getSemaine().getSaison() == s ){
+                nbS ++ ;
+            }
+        }
+        return nbS ;
     }
     // Retourne le nombre de semaines pendant lesquelles 
     // l’appartement a été loué au cours de la saison passée en paramètre.

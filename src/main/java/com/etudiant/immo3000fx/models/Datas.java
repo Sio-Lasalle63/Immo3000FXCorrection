@@ -42,9 +42,13 @@ public class Datas {
     }
 
     public ObservableList<Semaine> getLesSemaines(Saison s) {
-        //Doit retourner la liste des Semaines qui correspondent à 
-        //la saison passée en paramètre
-        return null;
+        ObservableList<Semaine> laListeDeSemaines = FXCollections.observableArrayList() ;
+        for( Semaine uneSemaine : this.lesSemaines ){
+            if( uneSemaine.getSaison() == s ){
+                laListeDeSemaines.add(uneSemaine) ;
+            }
+        }
+        return laListeDeSemaines;
     }
 
     private void load() {
