@@ -131,6 +131,15 @@ public class Datas {
             }
         }
     }
+    
+    public Appartement getAppartementById( int id ){
+        for( Appartement app : this.lesAppartements  ){
+            if( app.getNumero() == id ){
+                return app ;
+            }
+        }
+        return null ;
+    }
 
 
 }

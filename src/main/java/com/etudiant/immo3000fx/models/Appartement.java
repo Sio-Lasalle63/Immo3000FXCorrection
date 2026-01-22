@@ -10,6 +10,12 @@ public class Appartement {
     private final String adresse;
     private final ObservableList<Location> sesLocations = FXCollections.observableArrayList();
 
+    public int getNumero() {
+        return numero;
+    }
+
+    
+    
     public Appartement(int numero, String libelle, String adresse) {
         this.numero = numero;
         this.libelle = libelle;
