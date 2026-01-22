@@ -42,10 +42,10 @@ public class Datas {
     }
 
     public ObservableList<Semaine> getLesSemaines(Saison s) {
-        ObservableList<Semaine> laListeDeSemaines = FXCollections.observableArrayList() ;
-        for( Semaine uneSemaine : this.lesSemaines ){
-            if( uneSemaine.getSaison() == s ){
-                laListeDeSemaines.add(uneSemaine) ;
+        ObservableList<Semaine> laListeDeSemaines = FXCollections.observableArrayList();
+        for (Semaine uneSemaine : this.lesSemaines) {
+            if (uneSemaine.getSaison() == s) {
+                laListeDeSemaines.add(uneSemaine);
             }
         }
         return laListeDeSemaines;
@@ -131,15 +131,23 @@ public class Datas {
             }
         }
     }
-    
-    public Appartement getAppartementById( int id ){
-        for( Appartement app : this.lesAppartements  ){
-            if( app.getNumero() == id ){
-                return app ;
+
+    public Appartement getAppartementById(int id) {
+        for (Appartement app : this.lesAppartements) {
+            if (app.getNumero() == id) {
+                return app;
             }
         }
-        return null ;
+        return null;
     }
 
+    public Semaine getSemaineById(int id) {
+        for (Semaine sem : this.lesSemaines) {
+            if (sem.getNumSemaine() == id) {
+                return sem;
+            }
+        }
+        return null;
+    }
 
 }

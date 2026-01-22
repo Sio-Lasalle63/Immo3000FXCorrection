@@ -82,7 +82,6 @@ public class PrimaryController implements Initializable {
     }
 
     private void chargerDepuisFichier() {
-
         Scanner sc;
         try {
             sc = new Scanner(new File("locations.txt"));
@@ -92,12 +91,14 @@ public class PrimaryController implements Initializable {
                 String numApp = tab[0];
                 String numSem = tab[1];
                 System.out.println(numApp + " " + numSem);
+                Appartement app = Datas.getInstance().getAppartementById(Integer.valueOf(numApp).intValue()) ;
+                Semaine sem = Datas.getInstance().getSemaineById(Integer.valueOf(numSem).intValue()) ;
+                app.ajouter(sem) ;                
             }
             sc.close();
         } catch (FileNotFoundException ex) {
             System.getLogger(PrimaryController.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-
     }
 
 }
