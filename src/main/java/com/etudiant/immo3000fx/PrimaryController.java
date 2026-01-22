@@ -5,6 +5,7 @@ import com.etudiant.immo3000fx.models.Datas;
 import com.etudiant.immo3000fx.models.Location;
 import com.etudiant.immo3000fx.models.Saison;
 import com.etudiant.immo3000fx.models.Semaine;
+import com.sun.javafx.property.adapter.PropertyDescriptor;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -29,15 +30,15 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Affecter la liste d'appartement à la listView des appartements
         lvAppartements.setItems(Datas.getInstance().getLesAppartements());
-        //Affecter la liste des semaines au combox des semaines
-        //Affecter la liste des saisons au combox des saisons
-        //Définir un listener sur la listview des appartements afin de mettre à jour:
-        //   la liste des locations effectuées
-        //   le montant total des locations pour cet appartement
-        //Définir un listener sur le combobox des saisons afin de mettre à jour
-        //le combobox des semaine
+        cbSaison.setItems(Datas.getInstance().getLesSaisons());
+        cbSaison.getSelectionModel().selectedItemProperty().addListener((ov, saisonOld, saisonNew) -> {
+            cbSemaine.setItems(Datas.getInstance().getLesSemaines(saisonNew));
+        });
+        lvAppartements.getSelectionModel().selectedItemProperty().addListener((ov, appOld, appNew) -> {
+           lvLocations.setItems(appNew.getSesLocations());
+        });
+
     }
 
     @FXML
